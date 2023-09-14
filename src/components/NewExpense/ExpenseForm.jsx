@@ -18,16 +18,33 @@ export default function ExpenseForm() {
 		setEnteredDate(e.target.value);
 	};
 
+	const submitHandler = (e) => {
+		e.preventDefault();
+		const expenseData = {
+			title: enteredTitle,
+			amount: enteredAmount,
+			date: new Date(enteredDate),
+		};
+		setEnteredTitle('');
+		setEnteredAmount('');
+		setEnteredDate('');
+	};
+
 	return (
-		<form>
+		<form onSubmit={submitHandler}>
 			<div className='new-expense__controls'>
 				<div className='new-expense__control'>
 					<label htmlFor=''>Title</label>
-					<input type='text' onChange={titleChangeHandler} />
+					<input
+						type='text'
+						value={enteredTitle}
+						onChange={titleChangeHandler}
+					/>
 				</div>
 				<div className='new-expense__control'>
 					<label htmlFor=''>Amount</label>
 					<input
+						value={enteredAmount}
 						type='number'
 						min='0.1'
 						step='0.1'
@@ -37,6 +54,7 @@ export default function ExpenseForm() {
 				<div className='new-expense__control'>
 					<label htmlFor=''>Date</label>
 					<input
+						value={enteredDate}
 						type='date'
 						min='2020-01-01'
 						max='2023-12-31'
