@@ -18,7 +18,6 @@ function ExpenseItem({ expense }) {
 					<h2>{title}</h2>
 					<div className='expense-item__price'>${amount}</div>
 				</div>
-				<button onClick={buttonClickHandler}>Change Title</button>
 			</Card>
 		</>
 	);
